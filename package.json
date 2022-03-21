@@ -1,0 +1,19 @@
+{
+  "name": "awtlab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Bank.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pragathi2401/AWTLab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pragathi2401/AWTLab/issues"
+  },
+  "homepage": "https://github.com/pragathi2401/AWTLab#readme"
+}
