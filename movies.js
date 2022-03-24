@@ -1,5 +1,5 @@
 async function movies(){
-    const url="https://imdb-api.com/API/AdvancedSearch/k_5tka2m06?user_rating=8.5,10&release_date=2000-01-01,2022-01-01&genres=thriller&languages=te";
+    const url="https://imdb-api.com/API/AdvancedSearch/k_5tka2m06?user_rating=8.5,10&release_date=2020-01-01,2022-01-01&genres=thriller&languages=te";
     const response=await fetch(url);
     var data=await response.json();
     console.log(data);
