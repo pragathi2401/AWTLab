@@ -1,0 +1,110 @@
+<HTML>
+    <body align="center">
+        <h1>Student Details of Information Technology</h1>
+        Username : <input type="text" id="uname"><br><br>
+        Roll No. : <input type="text" id="rollno"><br><br>
+        Password : <input type="text" id="pwd"><br><br>
+        <button id="submit">submit</button>
+        <button id="select">select</button>
+        <button id="clear">clear</button>
+        <button id="update">update</button>
+        <button id="delete">delete</button>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyAsKLwJ7aGKHL3aOsF_OqaVWlmZVqf8nV4",
+              authDomain: "awtlab-f0292.firebaseapp.com",
+              databaseURL: "https://awtlab-f0292-default-rtdb.firebaseio.com",
+              projectId: "awtlab-f0292",
+              storageBucket: "awtlab-f0292.appspot.com",
+              messagingSenderId: "147317025387",
+              appId: "1:147317025387:web:99b666397b1cc8690b5f2e"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+          
+import{
+    getDatabase,
+    ref,
+    set,
+    get,
+    child,
+    update,
+    remove
+} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+const db=getDatabase();
+var unamebox=document.getElementById("uname");
+var rollbox=document.getElementById("rollno");
+var pwdbox=document.getElementById("pwd");
+var sbutton=document.getElementById("submit");
+var selbutton=document.getElementById("select");
+var clbutton=document.getElementById("clear");
+var upbutton=document.getElementById("update");
+var delbutton=document.getElementById("delete");
+
+function insertdata()
+{
+    set(ref(db,"std/"+rollbox.value),{
+        StdName:unamebox.value,
+        stdrollno:rollbox.value,
+        stdpassword:pwdbox.value,
+    }).then(()=>alert("data inserted "))
+    .catch(()=>alert("data not inserted"));
+}
+ function cleardata()
+ {
+     unamebox.value="";
+     rollbox.value="";
+     pwdbox.value="";
+ }
+function updatedata()
+ {
+     update(ref(db,"std/"+rollbox.value),{
+         StdName:unamebox.value,
+        stdrollno:rollbox.value,
+         stdpassword:pwdbox.value,
+     }).then(()=>alert("data updated "))
+     .catch(()=>alert("data not updated"));
+     cleardata();
+ }
+ function selectData()
+ {
+    const dbref=ref(db);
+     get(child(dbref,"std/"+rollbox.value))
+     .then((cdata)=>{
+         if(cdata.exists())
+         {
+             unamebox.value=cdata.val().StdName;
+             rollbox.value=cdata.val().stdrollno;
+             pwdbox.value=cdata.val().stdpassword;
+        }
+         else{
+             alert("No data found");
+         }
+     })
+     .catch((err)=>{
+         alert("unsuccessful,error"+err);
+     });
+     cleardata();
+ }
+ function deletedata()
+ {
+        remove(ref(db,"std/"+rollbox.value))
+        .then(()=>alert("data deleted "))
+        .catch(()=>alert("data not deleted"));
+        cleardata();
+ }
+sbutton.addEventListener("click",insertdata);
+ upbutton.addEventListener("click",updatedata);
+ clbutton.addEventListener("click",cleardata);
+ selbutton.addEventListener("click",selectData);
+ delbutton.addEventListener("click",deletedata);
+          </script>
+    </body>
+</HTML>
