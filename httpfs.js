@@ -3,7 +3,7 @@ var http=require('http');
 var server=http.createServer(function(req,res){
   if(req.url=="/")
   {
-      fs.readFile("sample.txt",(err,data)=>{
+      fs.readFile("test.txt",(err,data)=>{
           res.write(data);
           res.end();
       })
