@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pragathi2401/AWTLab/issues"
   },
-  "homepage": "https://github.com/pragathi2401/AWTLab#readme"
+  "homepage": "https://github.com/pragathi2401/AWTLab#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
